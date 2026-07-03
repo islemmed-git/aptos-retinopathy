@@ -1,0 +1,23 @@
+# --- PyTorch (GPU CUDA 12.1, compatible avec ton driver CUDA 12.8) ---
+# Installer torch separement avec la commande dediee (voir README), puis le reste :
+torch
+torchvision
+
+# --- Traitement d'image ---
+opencv-python
+Pillow
+
+# --- Donnees / ML ---
+numpy
+pandas
+scikit-learn
+
+# --- Visualisation ---
+matplotlib
+seaborn
+
+# --- Telechargement du dataset ---
+kaggle
+
+# --- Barre de progression ---
+tqdm

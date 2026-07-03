@@ -1,0 +1,15 @@
+# Donnees (trop volumineuses, telechargees depuis Kaggle)
+data/
+
+# Sorties generees (modeles, figures)
+outputs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Notebooks
+.ipynb_checkpoints/
