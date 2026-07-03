@@ -3,8 +3,21 @@
 Classification automatique du **stade de rétinopathie diabétique** (0 à 4)
 à partir d'images de **fond d'œil** (rétinographie), par *deep learning*.
 
+<p align="center">
+  <img src="assets/retino.png" alt="Fond d'œil avec lésions de rétinopathie diabétique (exsudats, hémorragies)" width="520">
+  <br>
+  <em>Exemple de rétinographie : exsudats (taches jaunes) et hémorragies (taches rouges sombres),
+  signes caractéristiques de la rétinopathie diabétique.</em>
+</p>
+
 > Projet pédagogique — pont entre le traitement d'image classique (OpenCV)
 > et l'imagerie médicale par IA (transfer learning + interprétabilité).
+
+<p align="center">
+  <img src="assets/retino.png" width="420" alt="Exemple d'image de fond d'œil (rétinographie)">
+  <br>
+  <em>Exemple d'image de fond d'œil : microanévrismes, exsudats et hémorragies visibles.</em>
+</p>
 
 ---
 
@@ -18,6 +31,13 @@ Image fond d'œil
    ├─ 3. Évaluation              (accuracy + quadratic weighted kappa)
    └─ 4. Grad-CAM               (carte de chaleur : où le modèle regarde)
 ```
+
+<p align="center">
+  <img src="assets/gradcam.png" width="720" alt="Grad-CAM : image prétraitée et carte de chaleur">
+  <br>
+  <em>Grad-CAM : à gauche l'image prétraitée (crop + CLAHE), à droite les zones
+  qui ont motivé la prédiction du modèle. Il se concentre bien sur les lésions.</em>
+</p>
 
 Les 5 stades :
 | Label | Stade |
@@ -90,6 +110,24 @@ Les résultats (modèle, matrice de confusion, Grad-CAM) sont dans `outputs/`.
 
 ---
 
+## 📊 Résultats
+
+Modèle **ResNet34** (transfer learning), 15 époques sur le jeu APTOS 2019 :
+
+| Métrique | Score |
+|----------|-------|
+| Accuracy | **0.814** |
+| Quadratic Weighted Kappa | **0.889** |
+
+<p align="center">
+  <img src="assets/confusion_matrix.png" width="560" alt="Matrice de confusion">
+  <br>
+  <em>Matrice de confusion sur le jeu de validation. Les confusions restent
+  concentrées entre stades voisins (1↔2, 2↔3), ce qui explique le kappa élevé.</em>
+</p>
+
+---
+
 ## 📁 Structure
 
 ```
@@ -98,6 +136,7 @@ aptos-retinopathy/
 ├── requirements.txt
 ├── data/                 # données APTOS (non versionnées)
 ├── outputs/              # modèles + figures générés
+├── assets/               # figures du README
 └── src/
     ├── config.py         # chemins, hyperparamètres, GPU
     ├── download_data.py  # téléchargement Kaggle
